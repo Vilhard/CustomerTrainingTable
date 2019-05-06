@@ -31,6 +31,13 @@ export default class TrainingList extends Component {
     }
   };
 
+  filterCaseInsensitive(filter, row) {
+    const id = filter.pivotId || filter.id;
+    return row[id] !== undefined
+      ? String(row[id].toLowerCase()).startsWith(filter.value.toLowerCase())
+      : true;
+  }
+
   render() {
     const columns = [
       {
@@ -45,7 +52,7 @@ export default class TrainingList extends Component {
         Header: "Date",
         accessor: "date",
         Cell: row => (
-          <span>{moment(row.value).format("D.M.YYYY - hh:mm a")}</span>
+          <span>{moment(row.value).format("D.M.YYYY - hh:mm A")}</span>
         )
       },
       {
@@ -78,6 +85,9 @@ export default class TrainingList extends Component {
       <div>
         <ReactTable
           filterable={true}
+          defaultFilterMethod={(filter, row) =>
+            this.filterCaseInsensitive(filter, row)
+          }
           data={this.state.trainings}
           columns={columns}
         />

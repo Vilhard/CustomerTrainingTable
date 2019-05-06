@@ -1,21 +1,22 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ButtonAppBar from "./components/ButtonAppBar";
-import ButtonAppBarTraining from "./components/ButtonAppBarTraining";
 import TrainingList from "./components/TrainingList";
 import CustomerList from "./components/CustomerList";
 import "./App.css";
+import Calender from "./components/Calender";
 
 function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <div>
-          <Route exact path="/" component={ButtonAppBar} />
-          <Route exact path="/" component={CustomerList} />
-          <Route exact path="/trainings" component={ButtonAppBarTraining} />
+        <Fragment>
+          <ButtonAppBar />
+          <Route exact path="/customers" component={CustomerList} />
+          <Route exact path="/trainings" />
           <Route path="/trainings" component={TrainingList} />
-        </div>
+          <Route path="/calender" component={Calender} />
+        </Fragment>
       </Switch>
     </BrowserRouter>
   );

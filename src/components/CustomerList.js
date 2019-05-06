@@ -13,6 +13,7 @@ export default class CustomerList extends Component {
   }
 
   componentDidMount() {
+    document.title = "Customer";
     this.fetchCustomers();
   }
 
@@ -57,6 +58,12 @@ export default class CustomerList extends Component {
     }
   };
 
+  filterCaseInsensitive(filter, row) {
+    const id = filter.pivotId || filter.id;
+    return row[id] !== undefined
+      ? String(row[id].toLowerCase()).startsWith(filter.value.toLowerCase())
+      : true;
+  }
   render() {
     const columns = [
       {
@@ -124,6 +131,9 @@ export default class CustomerList extends Component {
         <AddCustomer addCustomer={this.addCustomer} />
         <ReactTable
           filterable={true}
+          defaultFilterMethod={(filter, row) =>
+            this.filterCaseInsensitive(filter, row)
+          }
           data={this.state.customers}
           columns={columns}
         />

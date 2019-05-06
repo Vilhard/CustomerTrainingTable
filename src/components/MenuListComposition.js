@@ -73,7 +73,7 @@ class MenuListComposition extends React.Component {
                   <MenuList>
                     <MenuItem
                       component={Link}
-                      to="/"
+                      to="/customers"
                       onClick={this.handleClose}
                     >
                       Customers
@@ -84,6 +84,13 @@ class MenuListComposition extends React.Component {
                       onClick={this.handleClose}
                     >
                       Trainings
+                    </MenuItem>
+                    <MenuItem
+                      component={Link}
+                      to="/calender"
+                      onClick={this.handleClose}
+                    >
+                      Calender
                     </MenuItem>
                   </MenuList>
                 </ClickAwayListener>

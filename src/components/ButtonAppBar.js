@@ -5,6 +5,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import MenuListComposition from "./MenuListComposition";
+import Header from "./Header";
 
 const styles = {
   root: {
@@ -21,13 +22,14 @@ const styles = {
 
 function ButtonAppBar(props) {
   const { classes } = props;
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar>
           <MenuListComposition />
           <Typography variant="h6" color="inherit" className={classes.grow}>
-            Customers
+            <Header />
           </Typography>
         </Toolbar>
       </AppBar>
